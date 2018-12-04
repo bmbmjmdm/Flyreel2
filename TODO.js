@@ -8,6 +8,6 @@ class TODO {
     }
 }
 
-idCounter = 0;
+var idCounter = 0;
 
 module.exports = TODO;

@@ -1,47 +1,45 @@
 var TODO = require('./TODO.js');
-
-class Database {
 	
 //******************** Database setup and access *******************
 
 //our hashmap of TODOs, key is username and value is TODO array
 //TODOs would be more efficient if they were held in a hashmap corresponding to their ID, not an array! I already wrote up all this code though so won't change it now 
-static TODOList = {};
+var TODOList = {};
 
 //our hashmap of filter preferences, key is username and value is a function
-static filterList = {};
+var filterList = {};
 
 //HARDCODED VALUES FOR USER A B C 
-{this.filterList.put('A', this.nextFive);
-this.filterList.put('B', this.titleDesc);
-this.filterList.put('C', this.incompleteTitles);}
+filterList['A']=nextFive;
+filterList['B']=titleDesc);
+filterList['C']=incompleteTitles);
 
 
 
 //called on every server call to ensure the username is part of our TODOList and filterList maps, even if their TODOs are empty and filter vanilla
-static function addUser(username){
+function addUser(username){
 	if(!TODOList[username]){
-		TODOList.put(username, []);
+		TODOList[username]=[];
 	}
 	
 	//filter function doesnt change list by default 
 	if(!filterList[username]){
-		filterList.put(username, (list)=>list);
+		filterList[username]=(list)=>list;
 	}
 }
 
 
 
-static function addTODO(username, todo){
+function addTODO(username, todo){
 	this.addUser(username);
-	TODOList.get(username).push(todo);
+	TODOList[username].push(todo);
 }
 
 
 //remove a TODO item based on its id 
-static function deleteTODO(username, id){
+function deleteTODO(username, id){
 	this.addUser(username);
-	var list = TODOList.get(username);
+	var list = TODOList[username];
 	
 	var removed = false;
 	
@@ -59,9 +57,9 @@ static function deleteTODO(username, id){
 
 
 //change the values of a TODO with the given id for the given username 
-static function updateTODO(username, id, due, title, desc, complete){
+function updateTODO(username, id, due, title, desc, complete){
 	this.addUser(username);
-	var list = TODOList.get(username);
+	var list = TODOList[username];
 	
 	var updated = false;
 	
@@ -80,11 +78,11 @@ static function updateTODO(username, id, due, title, desc, complete){
 }
 
 //filter the user's TODOs and return them 
-static function readTODO(username){
+function readTODO(username){
 	this.addUser(username);
-	var list = TODOList.get(username);
+	var list = TODOList[username];
 	
-	return filterList.get(username)(list);
+	return filterList[username](list);
 }
 
 
@@ -100,7 +98,7 @@ static function readTODO(username){
 
 //sorts the TODOs by due date and returns the first 5 
 //note this alters the original list
-static function nextFive(list){
+function nextFive(list){
 	list.sort((a, b)=>{return new Date(b.date) - new Date(a.date);});
 	
 	let firstFive = [];
@@ -114,13 +112,13 @@ static function nextFive(list){
 }
 
 //extract each title/desc from the list of TODOs
-static function titleDesc(list){
+function titleDesc(list){
 	return list.map((todo)=>{return {title: todo.title, desc: todo.desc, id:todo.id}});
 }
 
 
 //go through all of the TODOs and extract the titles of each incomplete item 
-static function incompleteTitles{
+function incompleteTitles(list){
 	let incomplete = [];
 	
 	for(let i = 0; i<list.length; i++){
@@ -133,6 +131,6 @@ static function incompleteTitles{
 }
 
 
-}
 
-module.exports = Database;
+
+module.exports = {addUser, deleteTODO, updateTODO, readTODO};

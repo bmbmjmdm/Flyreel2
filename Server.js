@@ -20,7 +20,9 @@ http.createServer(function (req, res) {
 		var title = q.query.title;
 		var desc = q.query.desc;
 		
-		Database.addTODO(username, new TODO(due, title, desc));
+		var newTODO = new TODO(due, title, desc);
+		
+		Database.addTODO(username, newTODO);
 	
 		//return the successfull TODO
 		res.writeHead(200);

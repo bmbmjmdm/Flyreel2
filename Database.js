@@ -134,4 +134,4 @@ function incompleteTitles(list){
 
 
 
-module.exports = {addUser, deleteTODO, updateTODO, readTODO};
+module.exports = {addTODO, deleteTODO, updateTODO, readTODO};

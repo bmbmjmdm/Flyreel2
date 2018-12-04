@@ -1,0 +1,3 @@
+//run with command line:
+
+node Server.js 

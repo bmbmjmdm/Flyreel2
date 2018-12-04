@@ -1,0 +1,2 @@
+//Make a server call with a username you haven't used before and the user is automatically created
+//to alter their filter preferences, see filterList in Database.js 

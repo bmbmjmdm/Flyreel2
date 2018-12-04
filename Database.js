@@ -31,14 +31,14 @@ function addUser(username){
 
 
 function addTODO(username, todo){
-	this.addUser(username);
+	addUser(username);
 	TODOList[username].push(todo);
 }
 
 
 //remove a TODO item based on its id 
 function deleteTODO(username, id){
-	this.addUser(username);
+	addUser(username);
 	var list = TODOList[username];
 	
 	var removed = false;
@@ -58,7 +58,7 @@ function deleteTODO(username, id){
 
 //change the values of a TODO with the given id for the given username 
 function updateTODO(username, id, due, title, desc, complete){
-	this.addUser(username);
+	addUser(username);
 	var list = TODOList[username];
 	
 	var updated = false;
@@ -79,7 +79,7 @@ function updateTODO(username, id, due, title, desc, complete){
 
 //filter the user's TODOs and return them 
 function readTODO(username){
-	this.addUser(username);
+	addUser(username);
 	var list = TODOList[username];
 	
 	return filterList[username](list);

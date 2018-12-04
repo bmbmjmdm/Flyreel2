@@ -98,8 +98,9 @@ function readTODO(username){
 
 //sorts the TODOs by due date and returns the first 5 
 //note this alters the original list
+//sorting function needs to be updated to not include items PAST due date 
 function nextFive(list){
-	list.sort((a, b)=>{return new Date(b.date) - new Date(a.date);});
+	list.sort((a, b)=>{return new Date(a.date) - new Date(b.date);});
 	
 	let firstFive = [];
 	//make sure we dont go off the end of the array while retrieving the first 5 

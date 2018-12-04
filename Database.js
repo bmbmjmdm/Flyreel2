@@ -11,8 +11,8 @@ var filterList = {};
 
 //HARDCODED VALUES FOR USER A B C 
 filterList['A']=nextFive;
-filterList['B']=titleDesc);
-filterList['C']=incompleteTitles);
+filterList['B']=titleDesc;
+filterList['C']=incompleteTitles;
 
 
 

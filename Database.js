@@ -3,7 +3,7 @@ var TODO = require('./TODO.js');
 //******************** Database setup and access *******************
 
 //our hashmap of TODOs, key is username and value is TODO array
-//TODOs would be more efficient if they were held in a hashmap corresponding to their ID, not an array! I already wrote up all this code though so won't change it now 
+//TODOs would be more efficient if they were held in a hashmap corresponding to their ID, not an array! *Would do for optimization
 var TODOList = {};
 
 //our hashmap of filter preferences, key is username and value is a function

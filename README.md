@@ -1,3 +1,3 @@
 # Flyreel2
 
-A small database/server Node example for Flyreel 
+A small server Node example for Flyreel 
